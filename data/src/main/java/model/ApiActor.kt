@@ -1,3 +1,5 @@
 package model
 
-data class ApiActor ()
+data class ApiActor(
+    val name: String,
+)
