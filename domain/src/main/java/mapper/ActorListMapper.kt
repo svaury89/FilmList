@@ -6,9 +6,9 @@ import model.ActorModel
 import model.ApiActor
 import service.IActorList
 
-internal class ActorListMapper(private val actorList : IActorList) {
+internal class ActorListMapper(private val actorList : IActorList) : IActorListMapper {
 
-     fun mapToActorModelList(filmId: String): Flow<List<ActorModel>> =
+     override fun mapToActorModelList(filmId: String): Flow<List<ActorModel>> =
         actorList.getActorList(filmId).map {
             list -> list.map { mapToActorModel(it) }
         }

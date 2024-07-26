@@ -1,9 +1,9 @@
-package service
+package repository
 
 import model.ApiFilm
 import retrofit2.http.GET
 
-internal interface IPopularService {
+internal interface IPopularServiceRepository {
     @GET("popular")
     suspend fun getFilms(): List<ApiFilm>
 }

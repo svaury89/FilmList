@@ -7,14 +7,13 @@ import okhttp3.Response
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import service.ActorList
-import service.FilmList
+import repository.ActorListRepository
+import repository.FilmListRepository
 import service.IActorList
 import service.IActorsService
-import service.IFilmList
-import service.IPopularService
+import repository.IFilmListRepository
+import repository.IPopularServiceRepository
 import java.util.concurrent.TimeUnit
-import kotlin.math.sin
 
 fun provideHttpClient(): OkHttpClient {
     return OkHttpClient
@@ -52,8 +51,8 @@ fun provideRetrofit(
 internal fun actorService(retrofit: Retrofit): IActorsService =
     retrofit.create(IActorsService::class.java)
 
-internal fun filmService(retrofit: Retrofit): IPopularService =
-    retrofit.create(IPopularService::class.java)
+internal fun filmService(retrofit: Retrofit): IPopularServiceRepository =
+    retrofit.create(IPopularServiceRepository::class.java)
 
 
 val networkModule = module {
@@ -62,6 +61,6 @@ val networkModule = module {
     single { provideRetrofit(get(), get()) }
     single { actorService(get()) }
     single { filmService(get()) }
-    single<IFilmList> { FilmList(get()) }
-    single<IActorList> { ActorList(get()) }
+    single<IFilmListRepository> { FilmListRepository(get()) }
+    single<IActorList> { ActorListRepository(get()) }
 }

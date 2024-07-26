@@ -1,9 +1,9 @@
-package service
+package repository
 
 import kotlinx.coroutines.flow.Flow
 import model.ApiFilm
 
-interface IFilmList {
+interface IFilmListRepository {
 
     fun getFilmList() : Flow<List<ApiFilm>>
 }
