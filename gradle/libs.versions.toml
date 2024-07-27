@@ -13,8 +13,12 @@ material = "1.10.0"
 retrofit = "2.11.0"
 koin = "3.5.0"
 converterGson = "2.11.0"
+navVersion = "2.5.2"
 
 [libraries]
+navigationSafeArgs= {group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navVersion"}
+navigationUi = {group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navVersion"}
+navigation = {group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navVersion"}
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converterGson" }
@@ -39,4 +43,5 @@ material = { group = "com.google.android.material", name = "material", version.r
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+navigation-plugin ={ id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion"}
 

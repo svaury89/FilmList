@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 
 import kotlinx.coroutines.flow.stateIn
+import usecase.GetFilmListUseCase
 import model.FilmModel
-import usecase.IGetFilmListUseCase
 
 class FilmListViewModel(
-    val getFilmListUseCase: IGetFilmListUseCase
+    val getFilmListUseCase: GetFilmListUseCase
 ) : ViewModel() {
 
     val filmListFlow: StateFlow<FilmResult> =

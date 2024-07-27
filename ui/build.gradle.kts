@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.data"
+    namespace = "com.example.ui"
     compileSdk = 34
 
     defaultConfig {
@@ -33,13 +33,16 @@ android {
 }
 
 dependencies {
-    implementation(libs.retrofit)
-    implementation(libs.gson)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
     implementation(libs.koin)
     implementation(project(":domain"))
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

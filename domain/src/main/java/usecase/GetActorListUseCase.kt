@@ -1,9 +1,9 @@
 package usecase
 import kotlinx.coroutines.flow.Flow
-import mapper.IActorListMapper
 import model.ActorModel
+import repository.ActorListRepository
 
-internal class GetActorListUseCase (private val actorListMapper: IActorListMapper) : IGetActorListUseCase{
-    override fun invoke(filmId: String): Flow<List<ActorModel>> = actorListMapper.mapToActorModelList(filmId)
+class GetActorListUseCase (private val actorListRepository: ActorListRepository){
+    operator fun invoke(filmId: String): Flow<List<ActorModel>> = actorListRepository.getActorList(filmId)
 
 }
