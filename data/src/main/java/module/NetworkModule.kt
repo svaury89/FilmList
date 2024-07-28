@@ -9,13 +9,14 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import org.koin.dsl.module
+import paging.PagingMovieSource
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import repository.ActorListRepositoryImpl
 import repository.FilmListRepositoryImpl
 import repository.ActorListRepository
-import service.IActorsService
-import service.PopularServiceRepository
+import service.ActorsService
+import service.PopularService
 import java.util.concurrent.TimeUnit
 
 fun provideHttpClient(): OkHttpClient {
@@ -51,11 +52,11 @@ fun provideRetrofit(
         .build()
 }
 
-internal fun actorService(retrofit: Retrofit): IActorsService =
-    retrofit.create(IActorsService::class.java)
+internal fun actorService(retrofit: Retrofit): ActorsService =
+    retrofit.create(ActorsService::class.java)
 
-internal fun filmService(retrofit: Retrofit): PopularServiceRepository =
-    retrofit.create(PopularServiceRepository::class.java)
+internal fun filmService(retrofit: Retrofit): PopularService =
+    retrofit.create(PopularService::class.java)
 
 
 val networkModule = module {
@@ -65,7 +66,7 @@ val networkModule = module {
     single { actorService(get()) }
     single { filmService(get()) }
     factory<ActorListMapper> { ActorListMapperImpl(get()) }
-    factory<FilmListMapper> { FilmListMapperImpl(get()) }
+    factory<FilmListMapper> { FilmListMapperImpl() }
     single<FilmListRepositoryImpl> { FilmListRepositoryImpl(get(),get()) }
     single<ActorListRepository> { ActorListRepositoryImpl(get(),get()) }
 }

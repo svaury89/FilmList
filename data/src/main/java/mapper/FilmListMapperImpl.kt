@@ -1,16 +1,16 @@
 package mapper
 
-import model.ApiFilm
+import model.ApiFilmDetail
 import model.FilmModel
 import repository.FilmListRepositoryImpl
 
-internal class FilmListMapperImpl(private val filmList: FilmListRepositoryImpl): FilmListMapper {
+internal class FilmListMapperImpl: FilmListMapper {
 
-     override fun mapToFilmModel(apiFilm: ApiFilm): FilmModel = FilmModel(
-        id = apiFilm.id,
-        name = apiFilm.name,
-        imageUrl = apiFilm.imageUrl,
-        synopsis = apiFilm.synopsis,
-        rate = apiFilm.rate
+     override fun mapToFilmModel(apiFilmDetail: ApiFilmDetail): FilmModel = FilmModel(
+        id = apiFilmDetail.id,
+        name = apiFilmDetail.name,
+        imageUrl = apiFilmDetail.imageUrl,
+        synopsis = apiFilmDetail.synopsis,
+        rate = apiFilmDetail.rate
     )
 }

@@ -1,9 +1,11 @@
 package model
 
+import com.google.gson.annotations.SerializedName
+
 data class ApiFilm(
-    val id : String,
-    val name: String,
-    val synopsis: String,
-    val imageUrl: String,
-    val rate: Int,
+
+    @SerializedName("page")
+    val page : Int,
+    @SerializedName("results")
+    val films : List<ApiFilmDetail>
 )

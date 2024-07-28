@@ -4,11 +4,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import mapper.ActorListMapper
 import model.ActorModel
-import service.IActorsService
+import service.ActorsService
 
-internal class ActorListRepositoryImpl (private val iActorsService: IActorsService, private val actorListMapper: ActorListMapper) :
+internal class ActorListRepositoryImpl (private val actorsService: ActorsService, private val actorListMapper: ActorListMapper) :
     ActorListRepository {
     override fun getActorList(filmId: String): Flow<List<ActorModel>> = flow {
-        emit(iActorsService.getActors(filmId).map {actorListMapper.mapToActorModel(it)})
+        emit(actorsService.getActors(filmId).map {actorListMapper.mapToActorModel(it)})
     }
 }

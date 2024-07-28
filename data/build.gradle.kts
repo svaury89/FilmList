@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.koin)
+    implementation(libs.pagination)
     implementation(project(":domain"))
     implementation(libs.material)
     testImplementation(libs.junit)
